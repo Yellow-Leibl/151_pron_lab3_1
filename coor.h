@@ -12,6 +12,8 @@
 
 extern int isDouble(const char * str);
 
+extern int dFlag;
+
 enum code_t
 {
     WRONG = -1,

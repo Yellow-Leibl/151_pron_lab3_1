@@ -1,24 +1,35 @@
 #include "header.h"
+#include "rectangle.h"
+
+void help(const char * nm)
+{
+    const char * appNm = strchr(nm, '/');
+    
+    printf("application to build the minimal rectangle containing a track\n");
+    printf("usage:\n");
+    printf("%s  [-?] [-v] [-d] [-8] \nwhere\n", appNm + 1);
+    printf("-?  this page\n");
+    printf("-d  to debug\n");
+    printf("-v  to show additional info\n");
+    printf("-8  to print 8 digits after ., opposite - 6 only\n");
+    exit(1);
+}
 
 int main(int argc, char ** argv)
 {
     uint start_time = clock();
     time_t sT = time(0);
-    int dFlag = 0;
     int vFlag = 0;
     int only6 = 0;
 
     for (int i = 1; i < argc; i++)
     {
         if (isHelp(argv[i]))
-        {
-            printf("a.exe [-?] [-v] [-d] [-8]\n");
-            exit(1);
-        }
+            help(argv[0]);
         else if (keycmp(argv[i], "v"))
             vFlag = 1;
         else if (keycmp(argv[i], "d"))
-            dFlag = 1;
+            dFlag = 0;
         else if (keycmp(argv[i + 1], "6"))
             only6 = 6;
         else if (keycmp(argv[i + 1], "8"))
@@ -57,10 +68,9 @@ int main(int argc, char ** argv)
 
     if (vFlag)
     {
-        time_t eT = time(0);
         fprintf(stderr, "%f secs\t- working time (clock)\n",
                 (double)(clock() - start_time)/CLOCKS_PER_SEC);
         fprintf(stderr, "%f secs\t\t- working time (time)\n",
-                difftime(eT, sT));
+                difftime(time(0), sT));
     }
 }

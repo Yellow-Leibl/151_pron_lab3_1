@@ -51,7 +51,10 @@ coor2::coor2(const char * str)
     }
 }
 
+int dFlag = 1;
+
 coor2::~coor2()
 {
-    fprintf(stderr, "Destructor coor2(%f; %f) is here\n", x, y);
+    if (dFlag)
+        fprintf(stderr, "Destructor coor2(%f; %f) is here\n", x, y);
 }

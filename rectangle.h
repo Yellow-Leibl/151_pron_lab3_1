@@ -1,6 +1,10 @@
 #ifndef RECTANGLE
 #define RECTANGLE
 
+#include <malloc.h>
+#include <string.h>
+#include <iostream>
+
 #include "coor.h"
 
 #ifdef MEMWATCH

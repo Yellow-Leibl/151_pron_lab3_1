@@ -1,5 +1,3 @@
-#ifndef RECT
-#define RECT
 #include "rectangle.h"
 
 rectangle::rectangle()
@@ -40,6 +38,6 @@ char * rectangle::print(const int only6)
 
 rectangle::~rectangle()
 {
-    fprintf(stderr, "Destructor rectangle() is here\n");
+    if (dFlag)
+        fprintf(stderr, "Destructor rectangle() is here\n");
 }
-#endif

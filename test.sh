@@ -8,4 +8,10 @@ else
 g++ *.cpp memwatch.c -DMEMWATCH -DMEMWATCH_STDIO -o a.exe
 fi
 
-$a -v -d 1 <in.txt && cat memwatch.log >&2 && rm memwatch.log
+$a -v -d <in.txt && cat memwatch.log >&2 && rm memwatch.log
+
+echo ""
+echo "=======With -d flag========="
+echo ""
+
+$a -v <in.txt && cat memwatch.log >&2 && rm memwatch.log
